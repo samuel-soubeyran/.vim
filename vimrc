@@ -1,4 +1,37 @@
-execute pathogen#infect()
+set nocompatible              " required
+filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
+" https://github.com/VundleVim/Vundle.vim
+" installation: git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
+
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'scrooloose/nerdtree'
+Plugin 'kien/ctrlp.vim'
+Plugin 'vim-syntastic/syntastic'
+Plugin 'nvie/vim-flake8'
+Plugin 'jnurmine/Zenburn'
+
+" Add all your plugins here (note older versions of Vundle used Bundle instead of Plugin)
+
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+colorscheme zenburn
+
+map <C-n> :NERDTreeToggle<CR> " open NERDTree with Ctrl+n
+let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
+set nu "line numbering
+
+let python_highlight_all=1
+
 inoremap jk <ESC>
 syntax enable 
 set background=dark
@@ -47,8 +80,8 @@ set expandtab
 set smarttab
 
 " 1 tab == 4 spaces
-set shiftwidth=4
-set tabstop=4
+set shiftwidth=2
+set tabstop=2
 
 " Linebreak on 500 characters
 set lbr
@@ -57,6 +90,13 @@ set tw=500
 set ai "Auto indent
 set si "Smart indent
 set wrap "Wrap lines
+
+" Enable folding
+set foldmethod=indent
+set foldlevel=99
+
+" Enable folding with the spacebar
+nnoremap <space> za
 
 """"""""""""""""""""""""""""""
 " => Visual mode related
